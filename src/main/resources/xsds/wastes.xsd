@@ -1,0 +1,91 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.wastesoapapi.com/waste-ws"
+           targetNamespace="http://www.wastesoapapi.com/waste-ws" elementFormDefault="qualified">
+
+    <xs:element name="getWasteByIdRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="wasteId" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="getWasteByIdResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="wasteInfo" type="tns:wasteInfo"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:complexType name="wasteInfo">
+        <xs:sequence>
+            <xs:element name="wasteId" type="xs:string"/>
+            <xs:element name="label" type="xs:string"/>
+            <xs:element name="issuingCompany" type="xs:string"/>
+            <xs:element name="quantity" type="xs:string"/>
+            <xs:element name="expirationDate" type="xs:string"/>
+            <xs:element name="isCollected" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="getAllWastesRequest">
+        <xs:complexType/>
+    </xs:element>
+    <xs:element name="getAllWastesResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="wasteInfo" type="tns:wasteInfo" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:complexType name="serviceStatus">
+        <xs:sequence>
+            <xs:element name="statusCode" type="xs:string"/>
+            <xs:element name="message" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="addWasteRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="label" type="xs:string"/>
+                <xs:element name="issuingCompany" type="xs:string"/>
+                <xs:element name="quantity" type="xs:string"/>
+                <xs:element name="expirationDate" type="xs:string"/>
+                <xs:element name="isCollected" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="addWasteResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+                <xs:element name="wasteInfo" type="tns:wasteInfo"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="updateWasteRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="wasteInfo" type="tns:wasteInfo"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="updateWasteResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="deleteWasteRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="wasteId" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="deleteWasteResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
